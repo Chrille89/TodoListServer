@@ -16,6 +16,7 @@ public class TodoController {
     @Autowired
     private TodoRepository todoRepository;
 
+    @CrossOrigin
     @RequestMapping(
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE,
@@ -29,6 +30,7 @@ public class TodoController {
         return todoList;*/
     }
 
+    @CrossOrigin
     @RequestMapping(
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE,
@@ -39,6 +41,7 @@ public class TodoController {
         return todoRepository.save(todo);
     }
 
+    @CrossOrigin
     @RequestMapping(
             method = RequestMethod.DELETE,
             path = "/{id}"
