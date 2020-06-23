@@ -1,5 +1,4 @@
-version: '3'
-
+version: '3.2'
 services:
   database:
     image: mysql
@@ -20,14 +19,17 @@ services:
     image: openjdk:10-jre-slim
     container_name: springapi
     ports:
-      - 8080:8080
+     - 8080:8080
     depends_on:
-      - database
+     - database
     volumes:
-      - ./TodoListServer/target/TodoListServer-0.0.1-SNAPSHOT.jar:/application.jar
+     - ./target/TodoListServer-0.0.1-SNAPSHOT.jar:/application.jar
     command: ["java", "-jar", "application.jar"]
     networks:
-      - backendNetwork
+     - backendNetwork
 
 volumes:
-  todoListDatabaseData:
+    todoListDatabaseData:
+
+networks:
+    backendNetwork:

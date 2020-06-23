@@ -1,0 +1,16 @@
+version: '3.2'
+services:
+  database:
+    image: mysql
+    container_name: database
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: todoListDatabase
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - 3306:3306
+    volumes:
+      - todoListDatabaseData:/var/lib/mysql
+volumes:
+  todoListDatabaseData:
