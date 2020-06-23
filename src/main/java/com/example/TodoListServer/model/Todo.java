@@ -1,12 +1,25 @@
 package com.example.TodoListServer.model;
 
+import com.sun.istack.NotNull;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+import javax.persistence.*;
+
+@Entity
+@Table
 public class Todo {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @NotNull
     private String label;
 
-    public Todo(int id, String label) {
-        setId(id);
+    public Todo() {
+    }
+
+    public Todo(@NotNull String label) {
         setLabel(label);
     }
 
