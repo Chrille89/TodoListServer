@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  database:
+    image: mysql
+    container_name: database
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: todoListDatabase
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - 3306:3306
+    volumes:
+      - todoListDatabaseData:/var/lib/mysql
+    networks:
+      - backendNetwork
+
+  springapi:
+    image: openjdk:10-jre-slim
+    container_name: springapi
+    ports:
+      - 8080:8080
+    depends_on:
+      - database
+    volumes:
+      - ./TodoListServer/target/TodoListServer-0.0.1-SNAPSHOT.jar:/application.jar
+    command: ["java", "-jar", "application.jar"]
+    networks:
+      - backendNetwork
+
+volumes:
+  todoListDatabaseData:
