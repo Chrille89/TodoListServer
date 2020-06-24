@@ -23,11 +23,8 @@ public class TodoController {
             path = "/all"
     )
     public List<Todo> getAllTodos() {
+        System.out.println("Get all todos.");
         return todoRepository.findAll();
-       /* List<Todo> todoList = new ArrayList<>();
-        todoList.add(new Todo(1,"test1"));
-        todoList.add(new Todo(2,"test2"));
-        return todoList;*/
     }
 
     @CrossOrigin
